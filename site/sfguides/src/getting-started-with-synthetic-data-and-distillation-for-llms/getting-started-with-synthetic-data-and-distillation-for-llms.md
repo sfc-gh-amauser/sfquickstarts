@@ -233,7 +233,7 @@ Once we have the training data, we could use Snowflake AI & ML Studio to fine-tu
 - In the wizard that appears, select the base model for fine-tuning. In this case, `llama3-8b`. 
 - Select the appropriate role and warehouse for model fine-tuning.
 - Select the right database to store the fine-tuned model as well.
-- Select the training data including the prompt column, and complete column
+- Select the training data using `request` as the prompt column, and `category` as the completion column
 - In the end, select the validation data for Cortex to evaluate the fine-tuning process too
 - Inferencing the fine-tuned model
 
@@ -247,7 +247,7 @@ select snowflake.cortex.finetune(
 'DASH_DB.DASH_SCHEMA.SUPPORT_TICKETS_FINETUNED', 'llama3-8b', 
 'SELECT request as prompt, category as completion from DASH_DB.DASH_SCHEMA.training_data', 
 'SELECT request as prompt, category as completion from DASH_DB.DASH_SCHEMA.validation_data'
-););
+);
 ```
 After running the above query, we can keep track of the fine-tuning job using the below command.
 
